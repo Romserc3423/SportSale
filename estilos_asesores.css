@@ -1,0 +1,217 @@
+/* Definición de variables de color */
+:root {
+    --primary-color: #333333; /* Gris oscuro para elementos primarios */
+    --secondary-color: #555555; /* Gris medio para elementos secundarios */
+    --accent-color: #cccccc; /* Gris claro para acentos y bordes */
+    --dark-color: #000000; /* Negro puro */
+    --light-color: #ffffff; /* Blanco puro */
+    --text-color: #1a1a1a; /* Gris muy oscuro para texto general */
+    --box-shadow-red: 0 0 10px red; /* La sombra roja solicitada */
+    --general-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra general más suave */
+    --card-shadow: 0 8px 20px rgba(0, 0, 0, 0.08); /* Sombra de tarjeta más pronunciada */
+}
+
+/* Importación de fuentes de Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Roboto:wght@400;700&display=swap');
+
+/* Estilos Generales */
+body {
+    font-family: 'Roboto', sans-serif; /* Fuente principal para el cuerpo */
+    margin: 0;
+    padding: 0;
+    background-color: var(--light-color); /* Fondo blanco */
+    color: var(--text-color); /* Color de texto muy oscuro */
+    line-height: 1.6;
+}
+
+header {
+    background-color: var(--dark-color); /* Negro para el encabezado */
+    color: var(--light-color); /* Texto blanco */
+    text-align: center;
+    padding: 30px 20px;
+    margin-bottom: 30px;
+    box-shadow: var(--box-shadow-red); /* Sombra roja para el encabezado */
+    position: relative; /* Necesario para posicionar el botón de regreso */
+}
+
+header h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.8em;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+    color: var(--light-color); /* Título en blanco */
+}
+
+header p {
+    font-size: 1.1em;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Estilos para el botón de regresar */
+.btn.back-btn {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: var(--secondary-color); /* Gris medio para el botón */
+    color: var(--light-color); /* Texto blanco */
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-size: 0.9em;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: var(--general-shadow);
+}
+
+.btn.back-btn:hover {
+    background-color: #666666; /* Un gris más oscuro al pasar el ratón */
+    transform: translateY(-2px);
+}
+
+.btn.back-btn i {
+    font-size: 1.1em;
+}
+
+/* Contenedor de Asesores */
+.asesores-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Columnas responsivas */
+    gap: 30px; /* Espacio entre tarjetas */
+    max-width: 1200px;
+    margin: 0 auto 50px auto; /* Centrar y espacio inferior */
+    padding: 0 20px;
+}
+
+/* Tarjeta de Asesor Individual */
+.asesor-card {
+    background-color: var(--light-color); /* Fondo blanco */
+    border-radius: 12px;
+    box-shadow: var(--box-shadow-red); /* Sombra roja para las tarjetas de asesor */
+    padding: 30px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Efecto hover suave */
+    border: 1px solid var(--accent-color); /* Borde gris claro */
+}
+
+.asesor-card:hover {
+    transform: translateY(-8px); /* Elevación al pasar el mouse */
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15); /* Sombra de hover más sutil */
+}
+
+.asesor-foto {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%; /* Foto circular */
+    object-fit: cover; /* Asegura que la imagen cubra el área */
+    margin-bottom: 20px;
+    border: 4px solid var(--primary-color); /* Borde de color gris oscuro */
+    box-shadow: 0 0 0 6px rgba(51, 51, 51, 0.3); /* Sombra exterior con color primario */
+}
+
+.asesor-nombre {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.8em;
+    color: var(--dark-color); /* Nombre en negro */
+    margin-bottom: 8px;
+}
+
+.asesor-cargo {
+    font-size: 1.1em;
+    color: var(--secondary-color); /* Cargo en gris medio */
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.asesor-bio {
+    font-size: 0.95em;
+    color: #555; /* Texto bio en gris más suave */
+    margin-bottom: 20px;
+}
+
+.asesor-habilidades {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px; /* Espacio entre habilidades */
+}
+
+.asesor-habilidades li {
+    background-color: var(--accent-color); /* Fondo gris claro para las habilidades */
+    color: var(--text-color); /* Color de texto muy oscuro */
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.9em;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    border: 1px solid #dcdcdc; /* Borde gris más claro */
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 25px 20px;
+    background-color: var(--dark-color); /* Negro para el footer */
+    color: var(--light-color); /* Texto blanco */
+    font-size: 0.9em;
+    margin-top: 50px;
+}
+
+/* Media Queries para Responsividad */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2.2em;
+    }
+
+    /* Ajuste para el botón de regresar en pantallas pequeñas */
+    .btn.back-btn {
+        top: 15px;
+        left: 15px;
+        padding: 8px 12px;
+        font-size: 0.8em;
+    }
+
+    .asesores-container {
+        grid-template-columns: 1fr; /* Una sola columna en pantallas pequeñas */
+        padding: 0 15px;
+    }
+
+    .asesor-card {
+        padding: 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.8em;
+    }
+
+    .asesor-foto {
+        width: 120px;
+        height: 120px;
+    }
+
+    .asesor-nombre {
+        font-size: 1.5em;
+    }
+
+    .asesor-cargo {
+        font-size: 1em;
+    }
+
+    .asesor-bio {
+        font-size: 0.9em;
+    }
+
+    .asesor-habilidades li {
+        font-size: 0.85em;
+        padding: 7px 12px;
+    }
+}

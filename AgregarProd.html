@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPORTSALE - Añadir Nuevo Producto</title>
+    <link rel="stylesheet" href="style3.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --background-color: #f0f0f0; /* Gris claro para el fondo */
+            --card-bg-color: #ffffff; /* Blanco puro para el contenedor del formulario */
+            --text-color: #333333; /* Gris oscuro para el texto general */
+            --primary-color: #555555; /* Gris medio oscuro para acciones primarias/botones */
+            --primary-color-rgb: 85, 85, 85; /* Versión RGB para usos como box-shadow */
+            --primary-hover-color: #333333; /* Gris más oscuro para el hover del botón primario */
+            --border-color: #cccccc; /* Gris claro para bordes de inputs */
+            --input-bg-color: #ffffff; /* Blanco para fondos de inputs */
+            --cancel-btn-color: #777777; /* Gris para el botón de cancelar */
+            --cancel-btn-hover-color: #555555; /* Gris más oscuro para el hover del botón cancelar */
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: var(--background-color); /* Usa tu color de fondo principal */
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fuente consistente */
+            color: var(--text-color); /* Color de texto general */
+        }
+
+        .form-container {
+            background-color: var(--card-bg-color); /* Tu color de fondo para tarjetas */
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Sombra para el contenedor del formulario */
+            width: 100%;
+            max-width: 500px; /* Limita el ancho del formulario */
+            text-align: center;
+        }
+
+        .form-container h2 {
+            color: var(--text-color);
+            margin-bottom: 25px;
+            font-size: 1.8em;
+        }
+
+        .form-container form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px; /* Espacio entre los campos */
+        }
+
+        .form-container label {
+            text-align: left;
+            color: var(--text-color);
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .form-container input[type="text"],
+        .form-container input[type="number"],
+        .form-container select,
+        .form-container textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background-color: var(--input-bg-color);
+            color: var(--text-color);
+            font-size: 1em;
+            box-sizing: border-box; /* Incluye padding en el ancho */
+        }
+
+        .form-container input[type="text"]:focus,
+        .form-container input[type="number"]:focus,
+        .form-container select:focus,
+        .form-container textarea:focus {
+            outline: none;
+            border-color: var(--primary-color); /* Color de enfoque */
+            box-shadow: 0 0 0 3px rgba(var(--primary-color-rgb), 0.3); /* Sombra de enfoque usando el color primario */
+        }
+
+        .form-container textarea {
+            resize: vertical; /* Permite redimensionar verticalmente */
+            min-height: 80px;
+        }
+
+        .form-container .btn {
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .form-container .btn.primary-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+        }
+
+        .form-container .btn.primary-btn:hover {
+            background-color: var(--primary-hover-color);
+        }
+
+        .form-actions {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .form-actions .btn {
+            flex-grow: 1;
+        }
+
+        .form-actions .btn.cancel-btn {
+            background-color: var(--cancel-btn-color); /* Gris para cancelar */
+            color: white;
+            border: none;
+        }
+
+        .form-actions .btn.cancel-btn:hover {
+            background-color: var(--cancel-btn-hover-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Añadir Nuevo Producto</h2>
+        <form id="add-product-form">
+            <input type="hidden" id="product-id"> <label for="product-name">Nombre:</label>
+            <input type="text" id="product-name" required>
+
+            <label for="product-category">Categoría:</label>
+            <select id="product-category" required>
+                <option value="">Seleccionar Categoría</option>
+                <option value="ROPA">Ropa</option>
+                <option value="CALZADO">Calzado</option>
+                <option value="EQUIPOS">Equipos</option>
+                <option value="ACCESORIOS">Accesorios</option>
+                <option value="SUPLEMENTOS">Suplementos</option>
+                <option value="TECNOLOGIA">Tecnología</option>
+                <option value="UNISEX">Unisex</option>
+                <option value="DEPORTES">Deportes</option>
+            </select>
+
+            <label for="product-price">Precio:</label>
+            <input type="number" id="product-price" step="0.01" min="0" required>
+
+            <label for="product-stock">Stock:</label>
+            <input type="number" id="product-stock" min="0" required>
+
+            <label for="product-description">Descripción:</label>
+            <textarea id="product-description"></textarea>
+
+            <div class="form-actions">
+                <button type="submit" class="btn primary-btn">Guardar Producto</button>
+                <button type="button" id="cancel-add-btn" class="btn cancel-btn">Cancelar</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="scriptAP.js"></script>
+</body>
+</html>

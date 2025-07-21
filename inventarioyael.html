@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>INVENTARIO/ASESOR</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="estilosyael.css">
+</head>
+<body>
+  <header>
+    <h1>INVENTARIO PANEL ASESOR </h1>
+  </header>
+
+  <div class="container">
+    <aside class="sidebar">
+      <h3>Filtros</h3>
+      <div class="filter-group">
+        <label for="gender">Categorias</label>
+        <select id="gender">
+          <option value="Todos">Todos</option>
+          <option value="Caballero"> Caballero </option>
+          <option value="Dama"> Dama </option>
+          <option value="Mochilas"> Mochilas </option>
+          <option value="Niños" > Niños </option>
+          <option value="Niñas"> Niñas </option>
+          <option value="Gorras"> Gorras </option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label for="brand">Marca</label>
+        <select id="brand">
+          <option value="Todas">Todas</option>
+          <option value="Nike">Nike</option>
+          <option value="Adidas">Adidas</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label for="price">Precio máximo</label>
+        <input type="range" id="price" min="100" max="1000" value="1000">
+        <span id="price-value">$1000</span>
+      </div>
+    </aside>
+
+    <section class="products" id="product-list">
+      
+    </section>
+  </div>
+
+  <script>
+    const products = [
+      { name: "Nike Free Trainer 5.0", brand: "Nike", gender: "Hombre", price: 449, stock: 8, img: "img/tenis3.png" },
+      { name: "Nike Air Max 90", brand: "Nike", gender: "Hombre", price: 549, stock: 12, img: "img/tenis4.png" },
+      { name: "Nike Air Rift", brand: "Nike", gender: "Mujer", price: 449, stock: 5, img: "img/adidas1.png" },
+      { name: "Nike Windrunner", brand: "Nike", gender: "Hombre", price: 459, stock: 10, img: "img/tenis5.png" },
+      { name: "Nike Lunar Ballistec", brand: "Nike", gender: "Hombre", price: 699, stock: 3, img: "img/tenis6.png" },
+      { name: "Nike Dunk Low", brand: "Adidas", gender: "Hombre", price: 699, stock: 6, img: "img/tenis7.png" }
+    ];
+    
+
+    const container = document.getElementById("product-list");
+    const genderFilter = document.getElementById("gender");
+    const brandFilter = document.getElementById("brand");
+    const priceFilter = document.getElementById("price");
+    const priceValue = document.getElementById("price-value");
+
+    function renderProducts() {
+      const selectedGender = genderFilter.value;
+      const selectedBrand = brandFilter.value;
+      const selectedPrice = parseInt(priceFilter.value);
+
+      priceValue.textContent = `$${selectedPrice}`;
+
+      const filtered = products.filter(p => {
+        return (selectedGender === "Todos" || p.gender === selectedGender) &&
+               (selectedBrand === "Todas" || p.brand === selectedBrand) &&
+               p.price <= selectedPrice;
+      });
+
+      container.innerHTML = filtered.map(p => `
+        <div class="product">
+          <img src="${p.img}" alt="${p.name}">
+          <h4>${p.name}</h4>
+          <p>Género: ${p.gender}</p>
+          <p>Marca: ${p.brand}</p>
+          <p>Stock disponible: ${p.stock}</p>
+          <span>${p.price} MXN</span>
+        </div>
+      `).join("");
+    }
+
+    genderFilter.addEventListener("change", renderProducts);
+    brandFilter.addEventListener("change", renderProducts);
+    priceFilter.addEventListener("input", renderProducts);
+
+    renderProducts();
+  </script>
+</body>
+</html>
+
+

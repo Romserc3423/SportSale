@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title> Ventas </title>
+  <link rel="stylesheet" href="estilosyael.css">
+</head>
+<body class="venta">
+  <div class="container">
+    <div class="venta-principal">
+      <h2>Productos Seleccionados</h2>
+      <div style="margin-bottom: 20px;">
+  <input
+    type="text"
+    id="busqueda"
+    placeholder="Buscar producto..."
+    style="padding: 10px; width: 60%; max-width: 500px; 
+    font-size: 16px; border: 1px solid #ccc; border-radius: 5px;"
+  >
+  <button
+    onclick="buscarProducto()"
+    style="padding: 10px 20px; background-color: #da0909; color: white; 
+    border: none; border-radius: 5px; cursor: pointer; font-size: 16px;"
+  >
+    Buscar
+  </button>
+</div>
+
+      <table>
+        <thead>
+          <tr><th>Producto</th><th>Cant</th><th>Precio</th></tr>
+        </thead>
+        <tbody id="carrito"></tbody>
+      </table>
+      <p class="total">Total: $<span id="total">0</span> MXN</p>
+    </div>
+
+    <div class="panel-control">
+      
+      <input type="number" id="pagoCliente" placeholder="Pago del cliente">
+      <p id="mensajePago" style="color: red; display: none;">Efectivo insuficiente</p>
+      <button onclick="procesarPago()">Pagar</button>
+      <p>Cambio: $<span id="cambio">0</span></p>
+      <button onclick="finalizarVenta()">Finalizar Venta</button>
+    </div>
+  </div>
+
+  <div class="catalogo">
+    <h2>Catálogo de Productos</h2>
+    <div id="productos"></div>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="venta1.js"></script>
+</body>
+</html>

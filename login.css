@@ -1,0 +1,133 @@
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("imagenes/fondologin.jpg");
+  background-size: cover;
+  background-position: center;
+  filter: blur(7px); /* ← aquí defines qué tan borroso */
+  z-index: -1;
+  transform: scale(1.045); /* Evita bordes transparentes causados por el blur */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.login-container {
+  background: linear-gradient(to right, #181a1c, #292e2c, #383d39, #353a38);
+  padding: 40px;
+  border: none;
+  border-radius: 30px;
+  box-shadow: 4px 4px 10px rgba(255, 213, 88, 0.37);
+  max-width: 400px;
+  width: 100%;
+  animation: fadeIn 0.5s ease-in-out;
+  text-align: center;
+  border: 2px solid transparent; /* o #ccc para que tenga borde por defecto */
+  transition: border-color 0.3s ease;
+}
+
+.login-container h1 {
+  margin-bottom: 10px;
+  background: linear-gradient(to right, #ffd458, #ffb753, #ff98);
+  background-clip: text;
+  color: transparent;
+}
+
+.login-container form {
+  margin-top: 20px;
+}
+
+.login-container input[type="text"],
+.login-container input[type="password"],
+.login-container input[type="email"] {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  color: white;
+  font-weight: 500;
+  background-color: #3f4240;
+  border: 0.125em solid rgb(0, 0, 0);
+  border-radius: 5px;
+}
+
+.login-container input[type="radio"] {
+  margin-right: 10px;
+}
+
+.login-container p{
+    color: white;
+    font-weight: 500;
+}
+
+.login-container label {
+  display: block;
+  margin-top: 10px;
+  font-size: 0.95em;
+}
+
+.login-container button {
+  width: 40%;
+  padding: 12px;
+  margin-top: 20px;
+  background: linear-gradient(to right, #ffd458, #ffb753, #ff984e);
+  color: black;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+.login-container .social-icons {
+  margin-top: 20px;
+}
+
+.login-container .social-icons a {
+  margin: 0 10px;
+  color: #0083b0;
+  font-size: 1.5em;
+}
+
+.login-container .link {
+  margin-top: 15px;
+  font-size: 0.9em;
+}
+
+.login-container .link a {
+  color: #ffb753;
+  text-decoration: none;
+}
+
+.login-container label{
+color: white;
+font-weight: 400;
+
+
+}
+input[type="radio"] {
+    accent-color: #ffb753 ; /* Rojo vibrante, o el color que desees */
+}
+
