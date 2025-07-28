@@ -54,8 +54,10 @@ a:hover {
 }
 
 .btn:hover {
-    background-color: #ff939c; /* Un tono más oscuro del rojo primario */
+    background-color: #ff939c;
+     /* Un tono más oscuro del rojo primario */
 }
+
 
 /* --- Header --- */
 header {
@@ -209,6 +211,13 @@ header .logo h1 {
     background: linear-gradient(to right, #383d39, #353a38, #333333, #2a2b2d, #171717);
     
 }
+.banner-content a:hover{
+    transform: scale(150%);
+    transition: transform 0.25s ease-in-out;
+}
+.banner-content a:not(:hover){
+    transition: 0.3s ease-out;
+}
 
 .banner-content p {
     position: relative;
@@ -247,13 +256,14 @@ header .logo h1 {
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 30px;
     justify-content: center;
+    overflow: visible;
 }
 
 .product-card {
     background-color: #fff;
     border-radius: var(--border-radius);
     box-shadow: var(--box-shadow);
-    overflow: hidden;
+    overflow: visible;
     text-align: center;
     padding: 20px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -506,3 +516,23 @@ footer {
   background-image: url('imagenes/itesxNIKElogo.png'); /* Imagen slide 2 */
   
 }
+
+.imagenzoom:active{
+
+    transform: scale(180%);
+    transition: transform 0.25s ease-in-out;
+    
+}
+
+.imagenzoom:hover{
+   cursor: pointer;
+
+}
+.imagenzoom:not(:active){
+    transition: transform 0.5s ease-out;
+    
+}
+
+
+
+    

@@ -131,11 +131,13 @@ if (isset($_POST["registrar"])) {
 
 <div id="register-box" class="login-container" style="display:none;">
     <h1><i class="fas fa-user-plus"></i> Crear una cuenta</h1>
-    <form method="POST" autocomplete="off "action="">
+    <form method="POST" autocomplete="off" action="">
         <input type="text" name="nombre" placeholder="Nombre Completo" required>
         <input type="email" name="correo" placeholder="Correo Electrónico" required>
         <input type="text" name="user" placeholder="Nombre de Usuario" required>
-        <input type="password" name="pass" placeholder="Contraseña" required>
+        <input type="password" name="pass" placeholder="Contraseña" id="contrase" required>
+        <input type="checkbox" name="mostrar" id="showPassword" onchange="onCheck(this)">
+    
         <label><input type="radio" name="rol" value="gerente" required> Gerente</label>
         <label><input type="radio" name="rol" value="asesor"> Asesor</label>
         <label><input type="radio" name="rol" value="usuario"> Usuario</label>
@@ -146,6 +148,11 @@ if (isset($_POST["registrar"])) {
     </div>
 </div>
 <script>
+
+    function onCheck(e){
+        var inputPassword = document.getElementById("contrase");
+        inputPassword.type =    e.checked ? "text" : "password";
+    }
 function mostrarRegistro() {
     document.getElementById('login-box').style.display = 'none';
     document.getElementById('register-box').style.display = 'block';
