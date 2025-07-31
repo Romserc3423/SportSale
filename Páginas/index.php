@@ -15,13 +15,13 @@ include("conexion.php");
 session_start();
 
 if (isset($_SESSION['id_usuario'])) {
-    header("Location: index.html");
+    header("Location: Principal/index.html");
 }
 if (isset($_SESSION['id_gerente'])) {
-    header("Location: Gerente.html");
+    header("Location: Gerente/Gerente.html");
 }
 if (isset($_SESSION['id_asesor'])) {
-    header("Location: paginaindexyael.html");
+    header("Location: Asesor/paginaindexyael.html");
 }
 
 if (isset($_POST["ingresar"])) {
@@ -34,7 +34,7 @@ if (isset($_POST["ingresar"])) {
     if ($resultado_gerente->num_rows > 0) {
         $row = $resultado_gerente->fetch_assoc();
         $_SESSION['id_gerente'] = $row['idgerentes'];
-        header("Location: Gerente.html");
+        header("Location: Gerente/Gerente.html");
         exit();
     }   else {
         echo "<script>
@@ -48,7 +48,7 @@ if (isset($_POST["ingresar"])) {
     if ($resultado_asesor->num_rows > 0) {
         $row = $resultado_asesor->fetch_assoc();
         $_SESSION['id_asesor'] = $row['idasesores'];
-        header("Location: paginaindexyael.html");
+        header("Location: Asesor/paginaindexyael.html");
         exit();
     }   else {
         echo "<script>
@@ -62,7 +62,7 @@ if (isset($_POST["ingresar"])) {
     if ($resultado->num_rows > 0) {
         $row = $resultado->fetch_assoc();
         $_SESSION['id_usuario'] = $row['idusuarios'];
-        header("Location: index.html");
+        header("Location: Principal/index.html");
         exit();
     } else {
         echo "<script>

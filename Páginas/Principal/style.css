@@ -61,7 +61,7 @@ a:hover {
 
 /* --- Header --- */
 header {
-   background: url("imagenes/headerindex.jpg"),  no-repeat center center / cover;
+   background: url("../imagenes/headerindex.jpg"),  no-repeat center center / cover;
    background-size: cover;
    background-position: center;
     color: var(--light-color);
@@ -505,15 +505,15 @@ footer {
 
 /* Imagen de fondo para cada slide */
 .slide1 {
-  background-image: url('imagenes/fotografiar-zapatos-exteriores.jpg'); /* Imagen slide 1 */
+  background-image: url('../imagenes/fotografiar-zapatos-exteriores.jpg'); /* Imagen slide 1 */
 }
 
 .slide2 {
-  background-image: url('imagenes/ofertasslider.jpg'); /* Imagen slide 2 */
+  background-image: url('../imagenes/ofertasslider.jpg'); /* Imagen slide 2 */
   
 }
 .slide3 {
-  background-image: url('imagenes/itesxNIKElogo.png'); /* Imagen slide 2 */
+  background-image: url('../imagenes/itesxNIKElogo.png'); /* Imagen slide 2 */
   
 }
 
@@ -530,7 +530,7 @@ footer {
 }
 .imagenzoom:not(:active){
     transition: transform 0.5s ease-out;
-    
+
 }
 
 
