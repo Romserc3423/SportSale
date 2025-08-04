@@ -131,7 +131,10 @@ a:hover {
     background-color: var(--primary-color);
     color: var(--light-color);
     box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    
 }
+
+
 
 .sidebar-nav ul li a.active:hover {
     background-color: #444; /* Un poco más oscuro para el active hover */
@@ -146,21 +149,28 @@ a:hover {
 .content-area {
     flex-grow: 1;
     padding: 40px;
-    background-color: var(--light-color);
+    background: linear-gradient(to top, black, #444);
 }
 
 .content-header {
+    background-color: black;
+    opacity: 50%;
     margin-bottom: 40px;
     padding-bottom: 25px;
     border-bottom: 1px solid #ddd;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Nueva sombra añadida aquí */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .content-header h1 {
+    color: #ffd458;
+    text-align: center;
     font-size: 3em;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
-    color: var(--dark-color);
     margin: 0;
+   
     text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
 }
 

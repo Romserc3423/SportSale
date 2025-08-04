@@ -162,3 +162,74 @@ input[type="radio"] {
   }
 
 }
+
+.desplazar{
+ display: flex;
+ flex-wrap: wrap;
+  justify-content: space-between;
+  position: absolute;
+  width: 15em;
+  left: 670px;
+  top: 80px;
+  border: 1px solid transparent;
+  box-shadow: 2px -1px 7px 4px rgba(255, 213, 88, 0.977);
+  z-index: -1;
+  background: linear-gradient(to right, #ffd458, #ffb753, #ff984e);
+  opacity: 35%;
+  border-radius: 13px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.desplazar h1{
+ font-size: 130%;
+}
+
+.desplazar:hover{
+  display: flex;
+  position: absolute;
+ animation: cambioColor 0.5s forwards;
+ animation-timing-function: ease-in-out;
+  animation-iteration-count: 1;
+  transition: 0.5s;
+  font-size: 150%;
+  left: 622px;
+  top: 30px;
+  border: 1px solid transparent;
+  z-index: -1;
+  color: #ffd458;
+  opacity: 100%;
+}
+.desplazar:not(:hover){
+  animation: cambioColorReversa 0.5s forwards;
+  transition: 0.5s;
+  animation-timing-function: ease-out;
+}
+
+@keyframes cambioColor {
+  0% { background: #ffd458; }
+  100% { background: #181a1cb9; }
+}
+@keyframes cambioColorReversa {
+  0% { background: #181a1cb9; }
+  100% { background:  #ffd458; }
+}
+
+#togglePassword{
+  position: absolute;
+  top: 13.2em;
+  right: 38px;
+  z-index: 2;
+cursor: pointer;
+  color: rgb(36, 35, 35);
+}
+
+#togglePassword:hover{
+  transition: 0.5s ease-in;
+  color: #ffb753;
+}
+
+#togglePassword:not(:hover){
+transition: 1s ease-out;
+  color: rgb(36, 35, 35);
+}

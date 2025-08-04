@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio de sesión</title>
-	<link rel="stylesheet" href="login.css">
+	<link rel="stylesheet" href="login.css?v=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
 </head>
 <body>
+    
 <?php
 include("conexion.php");
 
@@ -136,34 +137,25 @@ if (isset($_POST["registrar"])) {
         <input type="email" name="correo" placeholder="Correo Electrónico" required>
         <input type="text" name="user" placeholder="Nombre de Usuario" required>
         <input type="password" name="pass" placeholder="Contraseña" id="contrase" required>
-        <input type="checkbox" name="mostrar" id="showPassword" onchange="onCheck(this)">
+        <i class="fa-solid fa-eye" id="togglePassword"></i>
     
-        <label><input type="radio" name="rol" value="gerente" required> Gerente</label>
+    
+        <!--<label><input type="radio" name="rol" value="gerente" required> Gerente</label>
         <label><input type="radio" name="rol" value="asesor"> Asesor</label>
-        <label><input type="radio" name="rol" value="usuario"> Usuario</label>
+        <label><input type="radio" name="rol" value="usuario"> Usuario</label>-->
         <button type="submit" name="registrar"><b>Registrar</b></button>
     </form>
-    <div class="link">
+    <div class="link" >
         <p>¿Ya tienes una cuenta? <a href="#" onclick="mostrarLogin()">Ingresar</a></p>
     </div>
+    
+    
 </div>
-<script>
+<div id="espaciogerente" class="desplazar" style="display:none;" onclick="CrearEmpleados()">
+        <h1>Crear asesor o gerente</h1>
 
-    function onCheck(e){
-        var inputPassword = document.getElementById("contrase");
-        inputPassword.type =    e.checked ? "text" : "password";
-    }
-function mostrarRegistro() {
-    document.getElementById('login-box').style.display = 'none';
-    document.getElementById('register-box').style.display = 'block';
-}
-
-function mostrarLogin() {
-    document.getElementById('register-box').style.display = 'none';
-    document.getElementById('login-box').style.display = 'block';
-}
-</script>
-
+    </div>
+    <script src="login.js"></script>
 </body>
 </html>
 
