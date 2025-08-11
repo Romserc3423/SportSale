@@ -25,6 +25,7 @@ if ($resultado->num_rows > 0) {
     <link rel="stylesheet" href="style3.css">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" type="image/png" href="../imagenes/iconosportsale-modified.png">
 </head>
 <body>
     <header class="inventory-header">
@@ -33,7 +34,7 @@ if ($resultado->num_rows > 0) {
             <nav class="inventory-nav">
                 <a href="panel.php" class="btn back-btn"><i class="fas fa-arrow-left"></i> Volver al Panel de Gerente</a>
                 <a href="AgregarProd.php" class="btn"><i class="fas fa-plus"></i> Añadir Nuevo Producto</a>
-                <a href="index.html" class="btn back-btn"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a>
+                <a href="../logout2.php" class="btn back-btn"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a>
             </nav>
         </div>
     </header>

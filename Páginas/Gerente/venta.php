@@ -40,6 +40,7 @@ $conn->close();
     <link rel="stylesheet" href="venta.css">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" type="image/png" href="../imagenes/iconosportsale-modified.png">
 </head>
 <body>
     <header class="sale-header">
@@ -47,7 +48,7 @@ $conn->close();
             <h1 class="sale-title">Realizar Venta</h1>
             <nav class="sale-nav">
                 <a href="panel.php" class="btn back-btn"><i class="fas fa-arrow-left"></i> Volver al Panel de Gerente</a>
-                <a href="index.html" class="btn back-btn"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a>
+                <a href="../logout2.php" class="btn back-btn"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a>
             </nav>
         </div>
     </header>

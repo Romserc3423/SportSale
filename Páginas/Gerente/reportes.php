@@ -67,6 +67,7 @@ try {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel de Reportes Diarios - SPORT_SALE</title>
     <link rel="stylesheet" href="reporte.css">
+    <link rel="icon" type="image/png" href="../imagenes/iconosportsale-modified.png">
 </head>
 <body>
     <header>

@@ -45,6 +45,7 @@ $transacciones = $resTransacciones['transacciones'] ?? 0;
     <link rel="stylesheet" href="style2.css">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" type="image/png" href="../imagenes/iconosportsale-modified.png">
 </head>
 <body>
     <div class="manager-container">

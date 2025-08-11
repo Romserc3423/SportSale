@@ -83,6 +83,7 @@ end:
     <link rel="stylesheet" href="Agp.css">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" type="image/png" href="../imagenes/iconosportsale-modified.png">
 </head>
 <body>
     <div class="form-container">
@@ -131,7 +132,7 @@ end:
 
             <div class="form-actions">
                 <button type="submit" class="btn primary-btn">Guardar Producto</button>
-                <button type="button" id="cancel-add-btn" class="btn cancel-btn" onclick="window.location.href='panel.php'">Cancelar</button>
+                <button type="button" id="cancel-add-btn" class="btn cancel-btn" onclick="window.location.href='Inventario.php'">Cancelar</button>
             </div>
         </form>
     </div>
