@@ -6,9 +6,6 @@ togglePassword.addEventListener('click', function(){
     alert("No puedes usar el boton de mostrar contraseña si no has ingresado ninguna contraseña");
  } else {
     
- 
-
-
   const isPassword = passwordInput.type === "password";
   passwordInput.type = isPassword ? "text" : "password";
 
@@ -19,12 +16,18 @@ togglePassword.addEventListener('click', function(){
     
 function mostrarRegistro() {
     document.getElementById('login-box').style.display = 'none';
+    document.getElementById('register-asesorgeren').style.display = 'none';
     document.getElementById('register-box').style.display = 'block';
-    document.getElementById('espaciogerente').style.display = 'block';
 }
 
 function mostrarLogin() {
     document.getElementById('register-box').style.display = 'none';   
-    document.getElementById('espaciogerente').style.display = 'none';
+    document.getElementById('register-asesorgeren').style.display = 'none';
     document.getElementById('login-box').style.display = 'block';
+}
+
+function mostrarLogin2() {   
+    document.getElementById('login-box').style.display = 'none';
+    document.getElementById('register-box').style.display = 'none';
+    document.getElementById('register-asesorgeren').style.display = 'block'; 
 }

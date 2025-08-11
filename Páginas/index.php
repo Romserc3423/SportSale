@@ -19,7 +19,7 @@ if (isset($_SESSION['id_usuario'])) {
     header("Location: Principal/index.html");
 }
 if (isset($_SESSION['id_gerente'])) {
-    header("Location: Gerente/Gerente.html");
+    header("Location: Gerente/panel.php");
 }
 if (isset($_SESSION['id_asesor'])) {
     header("Location: Asesor/paginaindexyael.html");
@@ -35,7 +35,7 @@ if (isset($_POST["ingresar"])) {
     if ($resultado_gerente->num_rows > 0) {
         $row = $resultado_gerente->fetch_assoc();
         $_SESSION['id_gerente'] = $row['idgerentes'];
-        header("Location: Gerente/Gerente.html");
+        header("Location: Gerente/panel.php");
         exit();
     }   else {
         echo "<script>
@@ -78,43 +78,69 @@ if (isset($_POST["registrar"])) {
     $correo = mysqli_real_escape_string($conexion, $_POST['correo']);
     $usuario = mysqli_real_escape_string($conexion, $_POST['user']);
     $password = mysqli_real_escape_string($conexion, $_POST['pass']);
-    $rol = mysqli_real_escape_string($conexion, $_POST['rol']);
+    $confirm_password = mysqli_real_escape_string($conexion, $_POST['confirm_pass']);
+    
+    // Opcional: código solo para el 3er formulario
+    $codigo = isset($_POST['codigo']) ? mysqli_real_escape_string($conexion, $_POST['codigo']) : null;
+
+    // Verificar que las contraseñas coincidan
+    if ($password !== $confirm_password) {
+        echo "<script>
+            alert('Las contraseñas no coinciden');
+            window.location = 'index.php';
+        </script>";
+        exit;
+    }
+
     $password_encriptada = sha1($password);
 
-    $sqluser = "SELECT idusuarios FROM usuarios WHERE usuario = '$usuario'";
-    $resultadouser = $conexion->query($sqluser);
+    // Verificar si el usuario ya existe en cualquiera de las tablas
+    $sqlCheckUsuario = "SELECT usuario FROM usuarios WHERE usuario = '$usuario'
+                        UNION
+                        SELECT usuario FROM asesores WHERE usuario = '$usuario'
+                        UNION
+                        SELECT usuario FROM gerentes WHERE usuario = '$usuario'";
+    $resultadoCheck = $conexion->query($sqlCheckUsuario);
 
-    if ($resultadouser->num_rows > 0) {
+    if ($resultadoCheck->num_rows > 0) {
         echo "<script>
             alert('El usuario ya existe');
             window.location = 'index.php';
         </script>";
-    } else {
-        if ($rol == "usuario") {
-            $sqlInsert = "INSERT INTO usuarios (NombreC, Correo, usuario, password) VALUES ('$nombre', '$correo', '$usuario', '$password_encriptada')";
-        } elseif ($rol == "asesor") {
-            $sqlInsert = "INSERT INTO asesores (NombreC, Correo, usuario, password) VALUES ('$nombre', '$correo', '$usuario', '$password_encriptada')";
-        } elseif ($rol == "gerente") {
-            $sqlInsert = "INSERT INTO gerentes (NombreC, Correo, usuario, password) VALUES ('$nombre', '$correo', '$usuario', '$password_encriptada')";
-        } else {
-            echo "<script>
-                alert('Rol no válido');
-                window.location = 'index.php';
-            </script>";
-            exit;
-        }
+        exit;
+    }
 
-        if ($conexion->query($sqlInsert)) {
-            echo "<script>
-                alert('Registro exitoso');
-                window.location = 'index.php';
-            </script>";
-        } else {
-            echo "<script>
-                alert('Error al registrarse');
-                window.location = 'index.php';
-            </script>";
-        }
+    // Lógica de inserción
+    if ($codigo === null || $codigo === "") {
+        // Registro normal (form 1 y 2)
+        $sqlInsert = "INSERT INTO usuarios (NombreC, Correo, usuario, password) 
+                      VALUES ('$nombre', '$correo', '$usuario', '$password_encriptada')";
+    } elseif ($codigo == "333") {
+        // Registro como asesor
+        $sqlInsert = "INSERT INTO asesores (NombreC, Correo, usuario, password) 
+                      VALUES ('$nombre', '$correo', '$usuario', '$password_encriptada')";
+    } elseif ($codigo == "444") {
+        // Registro como gerente
+        $sqlInsert = "INSERT INTO gerentes (NombreC, Correo, usuario, password) 
+                      VALUES ('$nombre', '$correo', '$usuario', '$password_encriptada')";
+    } else {
+        echo "<script>
+            alert('Código no válido');
+            window.location = 'index.php';
+        </script>";
+        exit;
+    }
+
+    if ($conexion->query($sqlInsert)) {
+        echo "<script>
+            alert('Registro exitoso');
+            window.location = 'index.php';
+        </script>";
+    } else {
+        echo "<script>
+            alert('Error al registrarse: " . mysqli_error($conexion) . "');
+            window.location = 'index.php';
+        </script>";
     }
 }
 ?>
@@ -138,6 +164,7 @@ if (isset($_POST["registrar"])) {
         <input type="text" name="user" placeholder="Nombre de Usuario" required>
         <input type="password" name="pass" placeholder="Contraseña" id="contrase" required>
         <i class="fa-solid fa-eye" id="togglePassword"></i>
+        <input type="password" name="confirm_pass" placeholder="Confirmar Contraseña" required>
     
     
         <!--<label><input type="radio" name="rol" value="gerente" required> Gerente</label>
@@ -147,14 +174,33 @@ if (isset($_POST["registrar"])) {
     </form>
     <div class="link" >
         <p>¿Ya tienes una cuenta? <a href="#" onclick="mostrarLogin()">Ingresar</a></p>
+        <p>¿Registrar gerente o asesor? <a href="#" onclick="mostrarLogin2()">Registrar</a></p>
     </div>
+</div>
+<!--Formulario de gerente y asesor -->
+    <div id="register-asesorgeren" class="login-container" style="display:none;">
+    <h1><i class="fas fa-user-plus"></i> Crear una cuenta</h1>
+    <form method="POST" autocomplete="off" action="">
+        <input type="text" name="nombre" placeholder="Nombre Completo" required>
+        <input type="email" name="correo" placeholder="Correo Electrónico" required>
+        <input type="text" name="user" placeholder="Nombre de Usuario" required>
+        <input type="password" name="pass" placeholder="Contraseña" id="contrase" required>
+        <i class="fa-solid fa-eye" id="togglePassword"></i>
+        <input type="password" name="confirm_pass" placeholder="Confirmar Contraseña" required>
+        <input type="text" name="codigo" placeholder="Código de validación XXXX" required>
     
+        <!--<label><input type="radio" name="rol" value="gerente" required> Gerente</label>
+        <label><input type="radio" name="rol" value="asesor"> Asesor</label>
+        <label><input type="radio" name="rol" value="usuario"> Usuario</label>-->
+        <button type="submit" name="registrar"><b>Registrar</b></button>
+        <div class="link">
+        <a href="#" onclick="mostrarLogin()">Inicio</a>
+        </div>
+    </form>
+
+</div>
     
 </div>
-<div id="espaciogerente" class="desplazar" style="display:none;" onclick="CrearEmpleados()">
-        <h1>Crear asesor o gerente</h1>
-
-    </div>
     <script src="login.js"></script>
 </body>
 </html>
