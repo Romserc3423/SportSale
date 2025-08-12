@@ -22,7 +22,7 @@ if (isset($_SESSION['id_gerente'])) {
     header("Location: Gerente/panel.php");
 }
 if (isset($_SESSION['id_asesor'])) {
-    header("Location: Asesor/paginaindexyael.html");
+    header("Location: Asesor/panel.php");
 }
 
 if (isset($_POST["ingresar"])) {
@@ -49,7 +49,7 @@ if (isset($_POST["ingresar"])) {
     if ($resultado_asesor->num_rows > 0) {
         $row = $resultado_asesor->fetch_assoc();
         $_SESSION['id_asesor'] = $row['idasesores'];
-        header("Location: Asesor/paginaindexyael.html");
+        header("Location: Asesor/panel.php");
         exit();
     }   else {
         echo "<script>
@@ -61,11 +61,20 @@ if (isset($_POST["ingresar"])) {
     $sql = "SELECT idusuarios FROM usuarios WHERE usuario ='$usuario' AND password ='$password_encriptada'";
     $resultado = $conexion->query($sql);
     if ($resultado->num_rows > 0) {
-        $row = $resultado->fetch_assoc();
-        $_SESSION['id_usuario'] = $row['idusuarios'];
-        header("Location: Principal/index.html");
-        exit();
-    } else {
+    $row = $resultado->fetch_assoc();
+
+    $_SESSION['id_usuario'] = $row['idusuarios'];
+
+    // Obtener también el nombre del usuario
+    $nombreQuery = "SELECT NombreC FROM usuarios WHERE idusuarios = {$row['idusuarios']}";
+    $nombreResult = $conexion->query($nombreQuery);
+    $nombreRow = $nombreResult->fetch_assoc();
+
+    $_SESSION['nombre_usuario'] = $nombreRow['NombreC'];
+
+    header("Location: Principal/index.php");
+    exit();
+} else {
         echo "<script>
             alert('Usuario o Password incorrectos');
             window.location = 'index.php';
@@ -148,7 +157,9 @@ if (isset($_POST["registrar"])) {
     <h1><i class="fas fa-user-circle"></i> Iniciar Sesión</h1>
     <form method="POST" autocomplete="off" action="">
         <input type="text" name="user" placeholder="Usuario" required>
-        <input type="password" name="pass" placeholder="Contraseña" required>
+        <i class="fa-solid fa-user" id="personita3"></i>
+        <input type="password" name="pass" placeholder="Contraseña" id="contrase5" required>
+        <i class="fa-solid fa-eye" id="togglePassword5"<></i>
         <button type="submit" name="ingresar"><b>Ingresar</b></button>
     </form>
     <div class="link">
@@ -160,12 +171,15 @@ if (isset($_POST["registrar"])) {
     <h1><i class="fas fa-user-plus"></i> Crear una cuenta</h1>
     <form method="POST" autocomplete="off" action="">
         <input type="text" name="nombre" placeholder="Nombre Completo" required>
+        <i class="fa-solid fa-user" id="personita"></i>
         <input type="email" name="correo" placeholder="Correo Electrónico" required>
+        <i class="fa-solid fa-envelope" id="emailicono"></i>
         <input type="text" name="user" placeholder="Nombre de Usuario" required>
+        <i class="fa-solid fa-user" id="personita2"></i>
         <input type="password" name="pass" placeholder="Contraseña" id="contrase" required>
         <i class="fa-solid fa-eye" id="togglePassword"></i>
-        <input type="password" name="confirm_pass" placeholder="Confirmar Contraseña" required>
-    
+        <input type="password" name="confirm_pass" placeholder="Confirmar Contraseña" id="contrase2" required>
+        <i class="fa-solid fa-eye" id="togglePassword2"></i>
     
         <!--<label><input type="radio" name="rol" value="gerente" required> Gerente</label>
         <label><input type="radio" name="rol" value="asesor"> Asesor</label>
@@ -182,19 +196,23 @@ if (isset($_POST["registrar"])) {
     <h1><i class="fas fa-user-plus"></i> Crear una cuenta</h1>
     <form method="POST" autocomplete="off" action="">
         <input type="text" name="nombre" placeholder="Nombre Completo" required>
+        <i class="fa-solid fa-user" id="personita"></i>
         <input type="email" name="correo" placeholder="Correo Electrónico" required>
+         <i class="fa-solid fa-envelope" id="emailicono"></i>
         <input type="text" name="user" placeholder="Nombre de Usuario" required>
-        <input type="password" name="pass" placeholder="Contraseña" id="contrase" required>
-        <i class="fa-solid fa-eye" id="togglePassword"></i>
-        <input type="password" name="confirm_pass" placeholder="Confirmar Contraseña" required>
+         <i class="fa-solid fa-user" id="personita2"></i>
+        <input type="password" name="pass" placeholder="Contraseña" id="contrase3" required>
+        <i class="fa-solid fa-eye" id="togglePassword3"></i>
+        <input type="password" name="confirm_pass" placeholder="Confirmar Contraseña" id="contrase4" required>
+        <i class="fa-solid fa-eye" id="togglePassword4"></i>
         <input type="text" name="codigo" placeholder="Código de validación XXXX" required>
-    
+        <i class="fa-solid fa-hashtag" id="codiguitoicono"></i>
         <!--<label><input type="radio" name="rol" value="gerente" required> Gerente</label>
         <label><input type="radio" name="rol" value="asesor"> Asesor</label>
         <label><input type="radio" name="rol" value="usuario"> Usuario</label>-->
         <button type="submit" name="registrar"><b>Registrar</b></button>
         <div class="link">
-        <a href="#" onclick="mostrarLogin()">Inicio</a>
+        <a href="#" onclick="mostrarLogin()"><b>Inicio</b></a>
         </div>
     </form>
 

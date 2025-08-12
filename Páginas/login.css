@@ -167,7 +167,7 @@ input[type="radio"] {
 #togglePassword{
   position: absolute;
   top: 13.2em;
-  right: 38px;
+  right: 4px;
   z-index: 2;
 cursor: pointer;
   color: rgb(36, 35, 35);
@@ -181,4 +181,118 @@ cursor: pointer;
 #togglePassword:not(:hover){
 transition: 1s ease-out;
   color: rgb(36, 35, 35);
+}
+#togglePassword3{
+  position: absolute;
+  top: 13.2em;
+  right: 4px;
+  z-index: 2;
+cursor: pointer;
+  color: rgb(36, 35, 35);
+}
+
+#togglePassword3:hover{
+  transition: 0.5s ease-in;
+  color: #ffb753;
+}
+
+#togglePassword3:not(:hover){
+transition: 1s ease-out;
+  color: rgb(36, 35, 35);
+}
+#togglePassword2{
+  position: absolute;
+  top: 17em;
+  right: 4px;
+  z-index: 2;
+cursor: pointer;
+  color: rgb(36, 35, 35);
+}
+
+#togglePassword2:hover{
+  transition: 0.5s ease-in;
+  color: #ffb753;
+}
+
+#togglePassword2:not(:hover){
+transition: 1s ease-out;
+  color: rgb(36, 35, 35);
+}
+#togglePassword4{
+  position: absolute;
+  top: 17em;
+  right: 4px;
+  z-index: 2;
+cursor: pointer;
+  color: rgb(36, 35, 35);
+}
+
+#togglePassword4:hover{
+  transition: 0.5s ease-in;
+  color: #ffb753;
+}
+
+#togglePassword4:not(:hover){
+transition: 1s ease-out;
+  color: rgb(36, 35, 35);
+}
+#togglePassword5{
+  position: absolute;
+  top: 5.4em;
+  right: 4px;
+  z-index: 2;
+cursor: pointer;
+  color: rgb(36, 35, 35);
+}
+
+#togglePassword5:hover{
+  transition: 0.5s ease-in;
+  color: #ffb753;
+}
+
+#togglePassword5:not(:hover){
+transition: 1s ease-out;
+  color: rgb(36, 35, 35);
+}
+#emailicono{
+position: absolute;
+  top: 5.4em;
+  right: 4px;
+  z-index: 2;
+  color: #ffb753e6;
+
+}
+
+#personita{
+position: absolute;
+  top: 1.5em;
+  right: 4px;
+  z-index: 2;
+  color: #ffb753e6;
+
+}
+#personita2{
+position: absolute;
+  top: 9.3em;
+  right: 4px;
+  z-index: 2;
+  color: #ffb753e6;
+
+}
+
+#personita3{
+position: absolute;
+  top: 1.5em;
+  right: 4px;
+  z-index: 2;
+  color: #ffb753e6;
+
+}
+
+#codiguitoicono{
+  position: absolute;
+  top: 21em;
+  right: 4px;
+  z-index: 2;
+  color: #ffb753e6;
 }

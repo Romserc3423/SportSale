@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -13,6 +15,10 @@
     <link rel="icon" type="image/png" href="../imagenes/iconosportsale-modified.png">
 </head>
 <body>
+    <?php
+session_start();
+$nombreUsuario = isset($_SESSION['nombre_usuario']) ? $_SESSION['nombre_usuario'] : null;
+?>
     <header>
         <div class="container header-content">
             <div class="logo">
@@ -24,9 +30,13 @@
             </div>
             <nav class="user-nav">
                 <ul>
-                    <li><a href="index.php" class="login-btn"><i class="fas fa-user"></i> Iniciar Sesión</a></li>
-                    <li><a href="#" class="cart-btn"><i class="fas fa-shopping-cart"></i> Carrito (<span id="cart-count">0</span>)</a></li>
-                    <li><a href="logout2.php" class="login-btn"><i class="fas fa-user"></i> Cerrar Sesión</a></li>
+                    <?php if ($nombreUsuario): ?>
+    <li><a href="#" class="login-btn"><i class="fas fa-user"></i> <?php echo htmlspecialchars($nombreUsuario); ?></a></li>
+<?php else: ?>
+    <li><a href="../index.php" class="login-btn"><i class="fas fa-user"></i> Iniciar Sesión</a></li>
+<?php endif; ?>
+                    <li><a href="comprar.php" class="cart-btn"><i class="fas fa-shopping-cart"></i> Carrito (<span id="cart-count">0</span>)</a></li>
+                    <li><a href="../logout.php" class="login-btn"><i class="fas fa-user"></i> Cerrar Sesión</a></li>
                 </ul>
             </nav>
         </div>
@@ -89,35 +99,35 @@
 
     <section id="productos-destacados-section" class="products-section">
         <div class="container">
-            <h2>Colaboraciones Destacadas</h2>
+            <h2>Productos Destacados</h2>
             <div class="product-grid">
                 <div class="product-card" data-name="zapatillas running ultraboost pro calzado correr deporte">
                     <img src="../imagenes/Ultrabost.jpeg" alt="Zapatillas Running" class="imagenzoom">
                     <h3>Zapatillas Ultraboost Pro</h3>
                     <p>Comodidad y rendimiento para tus carreras diarias.</p>
                     <span class="price">$120.00</span>
-                    <button class="add-to-cart-btn">Añadir al Carrito</button>
+                    <button class="add-to-cart-btn">Adquirir</button>
                 </div>
                 <div class="product-card" data-name="camiseta dry-fit ropa deportiva entrenamiento gym">
                     <img src="../imagenes/ITESxNIKE.png" alt="Tennis Edición ITES" class="imagenzoom">
                     <h3>Nike Air ITES</h3>
                     <p>Para los amantes del deporte y la programación.</p>
                     <span class="price">$100.00</span>
-                    <button class="add-to-cart-btn">Añadir al Carrito</button>
+                    <button class="add-to-cart-btn">Adquirir</button>
                 </div>
                 <div class="product-card" data-name="short deportivo ligero gimnasio ropa correr">
-                    <img src="https://via.placeholder.com/300x200?text=Short+Gimnasio" alt="Short Gimnasio">
-                    <h3>Short Deportivo Ligero</h3>
-                    <p>Ideal para el gimnasio y actividades al aire libre.</p>
+                    <img src="../imagenes/birdmansuplemento_.jpg" alt="Short Gimnasio" class="imagenzoom">
+                    <h3>Proteína Suplemento Birdman</h3>
+                    <p>Lo mejor para el crecimiento muscular</p>
                     <span class="price">$25.00</span>
-                    <button class="add-to-cart-btn">Añadir al Carrito</button>
+                    <button class="add-to-cart-btn">Adquirir</button>
                 </div>
                 <div class="product-card" data-name="mochila sportpack deportiva gym viaje">
-                    <img src="https://via.placeholder.com/300x200?text=Mochila+Deportiva" alt="Mochila Deportiva">
-                    <h3>Mochila SportPack</h3>
-                    <p>Amplia y resistente para llevar todo tu equipo.</p>
+                    <img src="../Gerente/uploads/68925ef1ddd55.jpeg" alt="Mochila Deportiva" class="imagenzoom">
+                    <h3>Sudadera EX</h3>
+                    <p>Cómoda y adecuada para ejercicios al aire libre</p>
                     <span class="price">$50.00</span>
-                    <button class="add-to-cart-btn">Añadir al Carrito</button>
+                    <button class="add-to-cart-btn">Adquirir</button>
                 </div>
             </div>
         </div>
@@ -132,21 +142,21 @@
                     <h3>Traje de Baño Profesional</h3>
                     <p>Diseñado para velocidad y comodidad en el agua.</p>
                     <span class="price">$65.00</span>
-                    <button class="add-to-cart-btn">Añadir al Carrito</button>
+                    <button class="add-to-cart-btn">Adquirir</button>
                 </div>
                 <div class="product-card" data-name="sandalias deportivas air playa piscina calzado verano">
                     <img src="https://via.placeholder.com/300x200?text=Sandalias+Deportivas" alt="Sandalias Deportivas">
                     <h3>Sandalias Deportivas Air</h3>
                     <p>Perfectas para después del entrenamiento o la playa.</p>
                     <span class="price">$30.00</span>
-                    <button class="add-to-cart-btn">Añadir al Carrito</button>
+                    <button class="add-to-cart-btn">Adquirir</button>
                 </div>
                 <div class="product-card" data-name="gorra anti-uv running proteccion solar verano">
                     <img src="https://via.placeholder.com/300x200?text=Gorra+Running" alt="Gorra Running">
                     <h3>Gorra Anti-UV</h3>
                     <p>Protección solar y ventilación para tus salidas.</p>
                     <span class="price">$20.00</span>
-                    <button class="add-to-cart-btn">Añadir al Carrito</button>
+                    <button class="add-to-cart-btn">Adquirir</button>
                 </div>
             </div>
         </div>
@@ -161,21 +171,21 @@
                     <h3>Balón de Fútbol Pro</h3>
                     <p>El balón favorito de nuestros clientes, alta durabilidad.</p>
                     <span class="price">$45.00</span>
-                    <button class="add-to-cart-btn">Añadir al Carrito</button>
+                    <button class="add-to-cart-btn">Adquirir</button>
                 </div>
                 <div class="product-card" data-name="guantes de entrenamiento gimnasio pesas gym">
                     <img src="https://via.placeholder.com/300x200?text=Guantes+Gimnasio" alt="Guantes de Gimnasio">
                     <h3>Guantes de Entrenamiento</h3>
                     <p>Agarre y protección para tus manos en cada levantamiento.</p>
                     <span class="price">$22.00</span>
-                    <button class="add-to-cart-btn">Añadir al Carrito</button>
+                    <button class="add-to-cart-btn">Adquirir</button>
                 </div>
                 <div class="product-card" data-name="botella hidratacion eco agua gym correr">
                     <img src="https://via.placeholder.com/300x200?text=Botella+Agua" alt="Botella de Agua">
                     <h3>Botella Hidratación Eco</h3>
                     <p>Mantente hidratado con estilo y de forma sostenible.</p>
                     <span class="price">$15.00</span>
-                    <button class="add-to-cart-btn">Añadir al Carrito</button>
+                    <button class="add-to-cart-btn">Adquirir</button>
                 </div>
             </div>
         </div>
@@ -235,10 +245,7 @@
 
            
 
-            document.querySelector('.cart-btn').addEventListener('click', (e) => {
-                e.preventDefault();
-                alert('Vista del Carrito de Compras por implementar.');
-            });
+         
 
             const searchInput = document.getElementById('search-input');
             const searchButton = document.getElementById('search-button');

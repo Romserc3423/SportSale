@@ -1,0 +1,119 @@
+/* Fuente general */
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #ffffff;
+    color: #333;
+}
+
+/* Encabezado */
+header {
+    background-color: #000;
+    padding: 20px 0;
+    text-align: center;
+    color: white;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+/* Botón volver */
+.back-btn {
+    display: inline-block;
+    margin: 10px 20px;
+    padding: 10px 16px;
+    background-color: #444;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 0.9rem;
+}
+
+.back-btn:hover {
+    background-color: #666;
+}
+
+/* Contenedor de asesores */
+.asesores-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    padding: 40px 20px;
+}
+
+/* Tarjeta de asesor */
+.asesor-card {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 0 12px rgba(255, 0, 0, 0.2);
+    width: 300px;
+    padding: 25px;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.asesor-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Foto del asesor */
+.asesor-foto {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #ccc;
+    margin-bottom: 15px;
+}
+
+/* Nombre y cargo */
+.asesor-nombre {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.asesor-cargo {
+    font-size: 1rem;
+    color: #555;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+/* Biografía */
+.asesor-bio {
+    font-size: 0.9rem;
+    color: #444;
+    margin-bottom: 15px;
+}
+
+/* Habilidades */
+.asesor-habilidades {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.asesor-habilidades li {
+    background-color: #ddd;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+}
+
+/* Footer */
+footer {
+    background-color: #000;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    margin-top: 40px;
+    font-size: 0.8rem;
+}

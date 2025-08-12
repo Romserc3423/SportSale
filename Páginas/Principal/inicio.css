@@ -21,6 +21,62 @@ body {
   display: flex;
   justify-content: center;
 }
+.Publicidad3{
+  width: 450px;
+  height: 700px;
+  display: flex;
+  justify-content: center;
+  
+}
+.Publicidad3 h1{
+    font-size: 3em;
+  width: 550px;
+  left: 275px;
+  z-index: 1;
+  position: absolute;
+  bottom: 7.3em;
+  background: linear-gradient(to right, #ffd458, #ffb753);
+  color: transparent;
+  background-clip: text;
+  font-family: "Roboto", sans-serif;
+  animation-name: fadeIn4;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+}
+  .Publicidad3 h2{
+  font-size: 4em;
+  width: 550px;
+  left: 150px;
+  z-index: 1;
+  position: absolute;
+  bottom: 7em;
+  background: linear-gradient(to right, #9b9797, #ffffff);
+  color: transparent;
+  background-clip: text;
+  font-family: "Roboto", sans-serif;
+  animation-name: fadeIn4;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+
+  }
+  .Publicidad3 h3{
+  font-family: "Roboto", sans-serif;
+  display: inline-block;
+  position: absolute;
+  -webkit-text-stroke-width: 0em;
+    -webkit-text-stroke-color: #000000;
+  color: #ffff;
+  filter: drop-shadow(0 0 10px rgba(150, 146, 88, 0.619));
+  bottom: 11em;
+  width: 600px;  
+ font-family: "Roboto", sans-serif;
+  font-size: 1.7em;
+  left: 8em;
+  z-index: 2;
+  animation-name: fadeIn3;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+}
 
 .Imagen1 {
   position: absolute;
